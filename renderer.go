@@ -5,11 +5,11 @@ package bfchroma
 import (
 	"io"
 
+	bf "github.com/SaitoJP/blackfriday/v2"
 	"github.com/alecthomas/chroma"
 	"github.com/alecthomas/chroma/formatters/html"
 	"github.com/alecthomas/chroma/lexers"
 	"github.com/alecthomas/chroma/styles"
-	bf "github.com/russross/blackfriday/v2"
 )
 
 // Option defines the functional option type
@@ -108,7 +108,7 @@ type Renderer struct {
 	ChromaOptions []html.Option
 	Style         *chroma.Style
 	Formatter     *html.Formatter
-	embedCSS bool
+	embedCSS      bool
 }
 
 // RenderNode satisfies the Renderer interface

@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"testing"
 
+	bf "github.com/SaitoJP/blackfriday/v2"
 	"github.com/alecthomas/chroma"
 	"github.com/alecthomas/chroma/formatters/html"
 	"github.com/alecthomas/chroma/styles"
-	bf "github.com/russross/blackfriday/v2"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

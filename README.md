@@ -13,12 +13,12 @@
 
 
 Integrating [Chroma](https://github.com/alecthomas/chroma) syntax highlighter as
-a [Blackfriday](https://github.com/russross/blackfriday) renderer.
+a [Blackfriday](https://github.com/SaitoJP/blackfriday) renderer.
 
 ## Install and prerequisites
 
 This project requires and uses the `v2` version of 
-[Blackfriday](https://github.com/russross/blackfriday/tree/v2).
+[Blackfriday](https://github.com/SaitoJP/blackfriday/tree/v2).
 
 ```
 $ go get -u github.com/Depado/bfchroma
@@ -105,7 +105,7 @@ import (
 
 	"github.com/Depado/bfchroma"
 
-	bf "github.com/russross/blackfriday/v2"
+	bf "github.com/SaitoJP/blackfriday/v2"
 )
 
 var md = "This is some sample code.\n\n```go\n" +
@@ -143,7 +143,7 @@ package main
 import (
 	"github.com/Depado/bfchroma"
 	"github.com/alecthomas/chroma/formatters/html"
-	bf "github.com/russross/blackfriday/v2"
+	bf "github.com/SaitoJP/blackfriday/v2"
 )
 
 // Defines the extensions that are used

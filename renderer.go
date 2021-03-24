@@ -4,6 +4,7 @@ package bfchroma
 
 import (
 	"io"
+	"strings"
 
 	bf "github.com/SaitoJP/blackfriday/v2"
 	"github.com/alecthomas/chroma"
@@ -122,13 +123,24 @@ func (r *Renderer) RenderNode(w io.Writer, node *bf.Node, entering bool) bf.Walk
 		}
 		return r.Base.RenderNode(w, node, entering)
 	case bf.CodeBlock:
-		if err := r.RenderWithChroma(w, node.Literal, node.CodeBlockData); err != nil {
+		if err := r.filenameWithRenderCode(w, node, entering); err != nil {
 			return r.Base.RenderNode(w, node, entering)
 		}
 		return bf.SkipChildren
 	default:
 		return r.Base.RenderNode(w, node, entering)
 	}
+}
+
+func (r *Renderer) filenameWithRenderCode(w io.Writer, node *bf.Node, entering bool) error {
+	info := node.CodeBlockData.Info
+	languageWithNameArray := strings.Split(string(info), ":")
+	if len(languageWithNameArray) > 1 {
+		w.Write([]byte("<span class=\"code-filename\">" + languageWithNameArray[1] + "</span>"))
+	}
+	node.CodeBlockData.Info = []byte(languageWithNameArray[0])
+	err := r.RenderWithChroma(w, node.Literal, node.CodeBlockData)
+	return err
 }
 
 // RenderHeader satisfies the Renderer interface
